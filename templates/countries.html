@@ -1,0 +1,16 @@
+{% extends "layout.html" %} {% block content %}
+    <div class="container float-container">
+        <div class="content-section float-child">
+            <p> {{ textinfo }}</p>
+        </div>
+        <section id="mosaic">
+        <div class="float-child row"> 
+            {% for url in links %}
+            <div class="column"> 
+                 <img src=" {{ url }}"></div>
+            
+            {% endfor %} 
+        </div>
+         </section>
+    </div>
+{% endblock content %}

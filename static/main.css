@@ -29,7 +29,9 @@ h2, h4, h5, h6 {
 }
 
 h3 {
-    
+   color: #fff;
+   font-size: 8px;
+   
 }
 
 .bg-steel {
@@ -62,7 +64,8 @@ cursor: pointer;
 }
 
 .container {
-    margin:5rem;
+    margin:5rem auto;
+    width: 100%;
 }
 
 .article-title {
@@ -174,51 +177,131 @@ img{
     color: #F2BB13;
 }
 
-/*
-#showcase .button1{
-    font-size:18px;
-    text-decoration:none;
-    border: 1px solid;
-    padding: 10px 20px;
-    border-radius:10px;
-    margin-top: 20px;
-    float:left;
-    color:white;
-}
-
-#showcase .button2{
-    font-size:18px;
-    text-decoration:none;
-    border: 1px solid;
-    padding: 10px 20px;
-    border-radius:10px;
-    margin-top: 20px;
-    float:right;
-    color:white;
-}
-*/
-
 #section-a {
-    padding: 20px;
+    margin:0;
+    background-color: rgba(255, 255, 255, 0.33);
+    background-size:cover;
+    background-position:center;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
     color: #fff;
     text-align: center;
 }
+
+#showcase{
+    margin:0;
+    background-image:linear-gradient(rgba(0,0,0,0.30),rgba(0,0,0,0.30)),url('showcase.jpg');
+    background-size:cover;
+    background-position:center;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+    padding: 0 20px;
+}
+
 
 #section-b {
-    padding: 20px;
+    height: 100vh;
+    padding: 45px;
     color: #fff;
     text-align: center;
-    display: flex;
 }
 
-#section-b div {
+#section-b1 {
+    padding: 5px;
+}
+
+#section-b2 {
+    display: flex;
+    height:100vh;
+}
+
+#section-b2 div {
     padding: 20px;
+    height:100vh;
 }
 
 #section-b .box-1, #section-b .box-3 {
+    height: 100vh;
     background: rgba(96, 35, 30, 0.29)
 }
 
 #section-b .box-2, #section-b .box-4 {
+    height: 100vh;
     background: rgba(122, 44, 37, 0.42)
+}
+
+.fwh-slide1 {
+    background-size:cover;
+    background-position:center;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: rgba(173, 69, 69, 0.39)
+}
+
+.fwh-slide2 {
+    background-size:cover;
+    background-position:center;
+    height: 100vh;
+    box-sizing: border-box;
+    /*background-color: rgba(155, 90, 90, 0.39)*/
+}
+
+.footer {
+    background: #303036;
+    color: #d3d3d3;
+    height: 200px
+    position: relative;
+}
+
+.float-container {
+    padding: 20px;
+}
+
+.float-child {
+    margin: 10px;
+    width: 45%;
+    float: left;
+}
+
+#mosaic .row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create two equal columns that sits next to each other */
+#mosaic .column {
+  flex: 100%;
+  max-width: 100%;
+  padding: 0 4px;
+}
+
+#mosaic .column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
 }

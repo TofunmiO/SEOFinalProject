@@ -1,15 +1,14 @@
-{% extends "layout.html" %} {% block content %} 
+{% extends "layout.html" %} {% block content %} <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
 <div class="container">
-<div class="content-section">
-    <h2>{{ subtitle }}</h2>
     <div class="content-section">
-        <h3>{{ flight }}</h3>
-        <div data-skyscanner-widget="SearchWidget" data-button-colour=#A61B0F></div>
+        <h2>{{ subtitle }}</h2>
+        <div class="content-section">
+            <h3>{{ flight }}</h3>
+            <div data-skyscanner-widget="SearchWidget" data-button-colour=#A61B0F></div>
+        </div>
+        <div class="content-section">
+            <h3>{{ hotel }}</h3>
+            <div data-skyscanner-widget="HotelSearchWidget" data-button-colour=#A61B0F></div>
+        </div>
     </div>
-    <div class="content-section">
-        <h3>{{ hotel }}</h3>
-        <div data-skyscanner-widget="HotelSearchWidget" data-button-colour=#A61B0F></div>
-        <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
-    </div>
-</div>
 </div>{% endblock content %}

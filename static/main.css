@@ -209,7 +209,7 @@ img{
 
 #section-b {
     height: 100vh;
-    padding: 45px;
+    padding: 55px;
     color: #fff;
     text-align: center;
 }
@@ -219,6 +219,7 @@ img{
 }
 
 #section-b2 {
+    padding: 30px;
     display: flex;
     height:100vh;
 }
@@ -226,6 +227,19 @@ img{
 #section-b2 div {
     padding: 20px;
     height:100vh;
+}
+
+.about {
+    padding:30px 100px;   
+}
+
+article img{
+    height: 80px;
+    width 80px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-top: -80px;
+    text-align: center;
 }
 
 #section-b .box-1, #section-b .box-3 {
@@ -305,3 +319,5 @@ img{
     max-width: 100%;
   }
 }
+
+

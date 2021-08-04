@@ -1,16 +1,9 @@
-{% extends "layout.html" %} {% block content %}
-    <div class="container float-container">
-        <div class="content-section float-child">
-            <p> {{ textinfo }}</p>
+{% extends "layout.html" %} {% block content %} 
+<section id="countries" class="container">
+    <div class="card__container"> {% for name in countries %} <div class="card">
+            <div class="card__content">
+                <h2 class="card__header">{{ name }}</h2>
+                <button class="card__button">Read now</button>
+            </div> {% endfor %}
         </div>
-        <section id="mosaic">
-        <div class="float-child row"> 
-            {% for url in links %}
-            <div class="column"> 
-                 <img src=" {{ url }}"></div>
-            
-            {% endfor %} 
-        </div>
-         </section>
-    </div>
-{% endblock content %}
+</section> {% endblock content %}

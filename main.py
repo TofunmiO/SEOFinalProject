@@ -1,13 +1,14 @@
-from flask import Flask, render_template, url_for, flash, redirect
+from flask import Flask, render_template, url_for, flash, redirect, session, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_behind_proxy import FlaskBehindProxy
 from flask_bcrypt import Bcrypt
-from sqlalchemy import exc
+from sqlalchemy import exc, text
 import requests
 from api_calls import mediawikiAPI, unsplashAPI, africanCountry
 from flask_login import LoginManager, UserMixin, login_required, \
     login_user, logout_user, current_user
 from forms import LoginForm, RegistrationForm
+import pandas as pd
 
 
 app = Flask(__name__)
@@ -24,6 +25,10 @@ login_manager.init_app(app)
 def load_user(user_id):
     return User.query.get(user_id)
 
+def create_table():
+    query = text("""CREATE TABLE IF NOT EXISTS ' {} ' (
+    country STRING )""".format(str(current_user.get_id())))
+    db.engine.execute(query)
 
 class User(db.Model):
     """An admin user capable of viewing reports.
@@ -62,32 +67,58 @@ def home():
                            text="See the beauty of Africa")
 
 
-@app.route("/discover")
+@app.route("/discover", methods=['GET', 'POST'])
 def discover():
     country = africanCountry()[1]
-    
+    data = []
+    data.append(country)
+    if request.method == 'POST':
+        create_table()
+        df = pd.DataFrame(data, columns = ['Country'])
+        """db.engine.execute("INSERT INTO ' {} ' VALUES (' {} ')" .format(
+            str(current_user.get_id()),
+            country))"""
+        df.to_sql(current_user.get_id(),
+                  con=db.engine,
+                  if_exists='append',
+                  index=False)
+        flash(f'Country added!', 'success')
+        return redirect(url_for("discover"))
     return render_template('discover.html',
                            subtitle='Discover',
                            text='Discover the beauty of Africa!',
                            textinfo=mediawikiAPI(country),
                            links=unsplashAPI(country))
-@app.route("/discover", methods = ['POST'])
-def discover_():
+'''@app.route("/discover", methods = ['POST'])
+def discover_():'''
     
 
 
-@app.route("/travel")
+@app.route("/travel", methods=['GET', 'POST'])
 def travel():
-    return render_template('countries.html',
-                           subtitle='Countries',
-                           text='Find your next flight:',
+    return render_template('travel.html',
+                           subtitle='Travel',
+                           flight='Find your next flight:',
                            hotel='Find your next accommodation:')
 
+
 @app.route("/countries")
+@login_required
 def countries():
+    try:
+        countries_saved = pd.read_sql_table(current_user.get_id(),
+                                      con=db.engine)
+    except ValueError:
+        flash(f'No countries found!', 'success')
+        return redirect(url_for('home'))
+    else:
+        countries = []
+        for row in countries_saved['Country']:
+            countries.append(row)
     return render_template('countries.html',
                            subtitle='Countries',
-                           text='Saved Items')
+                           text='Saved Items',
+                           countries=countries)
 
 
 # @app.route("/login", methods=['GET', 'POST'])
@@ -122,7 +153,7 @@ def login():
                 return redirect(url_for("home"))
         if not user:
             flash(f'Incorrect username or email account for {form.email.data}! Try again!', 'failed')
-            return redirect(url_for('login'))
+            return redirect(url_for("login"))
         password = User.query.get(form.password.data)
         if not password:
             flash(f'Incorrect password for {form.email.data}! Try again!', 'failed')

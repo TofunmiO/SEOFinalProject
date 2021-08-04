@@ -14,7 +14,7 @@ def africanCountry():
         ('BI', 'Burundi'),
         ('CM', 'Cameroon'),
         ('CV', 'Cape Verde'),
-        ('CF', 'Central African Rep'),
+        ('CF', 'Central African Republic'),
         ('TD', 'Chad'),
         ('KM', 'Comoros'),
         ('CD', 'Democratic Republic of the Congo'),
@@ -45,7 +45,7 @@ def africanCountry():
         ('NE', 'Niger'),
         ('NG', 'Nigeria'),
         ('RW', 'Rwanda'),
-        ('ST', 'Sao Tome'),
+        ('ST', 'Sao Tome and Principe'),
         ('SN', 'Senegal'),
         ('SC', 'Seychelles'),
         ('SL', 'Sierra Leone'),
@@ -63,6 +63,7 @@ def africanCountry():
     return random.choice(countries)
 
 def mediawikiAPI(page):
+    print(page)
     url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&explaintext=1&exintro=1&titles=%s' % (page)
     headers = {'User-Agent': 'AfriXplore'}
 

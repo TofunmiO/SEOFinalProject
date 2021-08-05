@@ -1,4 +1,7 @@
-{% extends "layout.html" %} {% block content %} <div class="container float-container">
+{% extends "layout.html" %} {% block content %}
+<div class="container float-container">
+    <h2 style='background-color:Tan;'>{{ countries }}</h2>
+    <div class="container float-container">
     <div class="content-section float-child">
         <p> {{ textinfo }}</p> {% if current_user.is_authenticated %} <form method="post">
             <input type="submit" value="Add country to collection!">
@@ -15,4 +18,6 @@
             <iframe id="igraph" scrolling="no" frameborder="0" style="border:none;" seamless="seamless" src='/static/example.html' class="responsive-iframe" width="1000" height="1000"></iframe>
         </p>
     </div>
+</div>
+
 {% endblock content %}

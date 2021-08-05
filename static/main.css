@@ -254,14 +254,20 @@ article img{
     text-align: center;
 }
 
+article blockquote {
+    
+}
+
 #section-b .box-1, #section-b .box-3 {
     height: 100vh;
-    background: rgba(96, 35, 30, 0.29)
+    background: rgba(96, 35, 30, 0.29);
+    width: 25%;
 }
 
 #section-b .box-2, #section-b .box-4 {
     height: 100vh;
-    background: rgba(122, 44, 37, 0.42)
+    background: rgba(122, 44, 37, 0.42);
+    width: 25%;
 }
 
 .fwh-slide1 {

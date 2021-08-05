@@ -1,9 +1,14 @@
 {% extends "layout.html" %} {% block content %} 
 <section id="countries" class="container"> 
-    {% for name in countries %} 
-    <div class="card">
-        <div class="container">
-            <h4><b>{{ name }}</b></h4>
-        </div>
-    </div> {% endfor %} 
+    {% for index in range(countries|length) %}
+    <div class="card-deck">
+      <div class="card col-md-4" style="width:400px">
+       <img class="card-img-top" src= "static/afriexplore.png" alt="Card image">
+       <div class="card-body">
+          <h4 class="card-title">{{ countries[index] }}</h4>
+          <p class="card-text">{{ textinfo[index] }}</p>
+       </div>
+      </div>
+    </div>
+  {% endfor %} 
 </section> {% endblock content %}

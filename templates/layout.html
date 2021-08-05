@@ -47,7 +47,16 @@
                 </div>
             </div>
         </nav>
-        {% if request.path == "/" %} 
+        {% if request.path == "/" %}
+        {% if get_flashed_messages(with_categories=true) %}
+        <div>
+            <div class="col-md-8"> {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %} 
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div> 
+                {% endfor %} {% endif %} {% endwith %} </div>
+        </div>
+        {% endif %}
         <h1>{{ subtitle }}</h1> 
         <p>{{ text }}</p>
         <div>
@@ -57,13 +66,6 @@
         {% endif %}
     </header> 
     <main role="main">
-        <!--<div class="row container">
-            <div class="col-md-8"> {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %} 
-                <div class="alert alert-{{ category }}">
-                    {{ message }}
-                </div> 
-                {% endfor %} {% endif %} {% endwith %} </div>
-        </div> -->
         {% block content %} {% endblock %}
     </main>
     <footer class="footer-content">

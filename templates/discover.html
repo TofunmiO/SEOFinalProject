@@ -1,15 +1,18 @@
 {% extends "layout.html" %} {% block content %} <div class="container float-container">
     <div class="content-section float-child">
-        <p> {{ textinfo }}</p>
-        {% if current_user.is_authenticated %}
-        <form method="post">
+        <p> {{ textinfo }}</p> {% if current_user.is_authenticated %} <form method="post">
             <input type="submit" value="Add country to collection!">
-        </form>
-        {% endif %}
+        </form> {% endif %}
     </div>
     <div id="mosaic">
         <div class="float-child row"> {% for url in links %} <div class="column">
                 <img src=" {{ url }}">
             </div> {% endfor %} </div>
     </div>
-</div> {% endblock content %}
+</div>
+    <div class='container'>
+        <p style="text-align:center">
+            <iframe id="igraph" scrolling="no" frameborder="0" style="border:none;" seamless="seamless" src='/static/example.html' class="responsive-iframe" width="1000" height="1000"></iframe>
+        </p>
+    </div>
+{% endblock content %}

@@ -1,9 +1,9 @@
 {% extends "layout.html" %} {% block content %} 
-<section id="countries" class="container">
-    <div class="card__container"> {% for name in countries %} <div class="card">
-            <div class="card__content">
-                <h2 class="card__header">{{ name }}</h2>
-                <button class="card__button">Read now</button>
-            </div> {% endfor %}
+<section id="countries" class="container"> 
+    {% for name in countries %} 
+    <div class="card">
+        <div class="container">
+            <h4><b>{{ name }}</b></h4>
         </div>
+    </div> {% endfor %} 
 </section> {% endblock content %}

@@ -9,7 +9,7 @@ from flask_login import LoginManager, UserMixin, login_required, \
     login_user, logout_user, current_user
 from forms import LoginForm, RegistrationForm
 import pandas as pd
-
+from map import createMap
 
 app = Flask(__name__)
 proxied = FlaskBehindProxy(app)
@@ -64,20 +64,18 @@ class User(db.Model):
 def home():
     return render_template('home.html',
                            subtitle='Welcome to AfriXplore!',
-                           text="See the beauty of Africa")
+                           text="Discover the beauty of Africa")
 
 
 @app.route("/discover", methods=['GET', 'POST'])
 def discover():
-    country = africanCountry()[1]
+    country = africanCountry()
+    createMap(country[1])
     data = []
-    data.append(country)
+    data.append(country[1])
     if request.method == 'POST':
         create_table()
         df = pd.DataFrame(data, columns = ['Country'])
-        """db.engine.execute("INSERT INTO ' {} ' VALUES (' {} ')" .format(
-            str(current_user.get_id()),
-            country))"""
         df.to_sql(current_user.get_id(),
                   con=db.engine,
                   if_exists='append',
@@ -87,11 +85,8 @@ def discover():
     return render_template('discover.html',
                            subtitle='Discover',
                            text='Discover the beauty of Africa!',
-                           textinfo=mediawikiAPI(country),
-                           links=unsplashAPI(country))
-'''@app.route("/discover", methods = ['POST'])
-def discover_():'''
-    
+                           textinfo=mediawikiAPI(country[1]),
+                           links=unsplashAPI(country[1]))
 
 
 @app.route("/travel", methods=['GET', 'POST'])
@@ -133,7 +128,7 @@ def countries():
 #             if bcrypt.check_password_hash(user.password, form.password.data):
 #                 user.authenticated = True
 #                 db.session.add(user)
-#                 db.session.commit()
+#                 db.sessionecommit()
 #                 login_user(user, remember=True)
 #                 return redirect(url_for("home"))
 #     return render_template("login.html", form=form)
@@ -196,4 +191,4 @@ def register():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True ,host="0.0.0.0")

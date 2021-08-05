@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+    <title>Coverage for /usr/local/lib/python3.6/dist-packages/geopy/geocoders/__init__.py: 89%</title>
+    <link rel="icon" sizes="32x32" href="favicon_32.png">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="jquery.isonscreen.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.pyfile_ready);
+    </script>
+</head>
+<body class="pyfile">
+<div id="header">
+    <div class="content">
+        <h1>Coverage for <b>/usr/local/lib/python3.6/dist-packages/geopy/geocoders/__init__.py</b> :
+            <span class="pc_cov">89%</span>
+        </h1>
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+        <h2 class="stats">
+            36 statements &nbsp;
+            <button type="button" class="run shortkey_r button_toggle_run" title="Toggle lines run">32 run</button>
+            <button type="button" class="mis show_mis shortkey_m button_toggle_mis" title="Toggle lines missing">4 missing</button>
+            <button type="button" class="exc show_exc shortkey_x button_toggle_exc" title="Toggle lines excluded">0 excluded</button>
+        </h2>
+    </div>
+</div>
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">r</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        <span class="key">p</span> &nbsp; toggle line displays
+    </p>
+    <p class="keyhelp">
+        <span class="key">j</span>
+        <span class="key">k</span> &nbsp; next/prev highlighted chunk
+    </p>
+    <p class="keyhelp">
+        <span class="key">0</span> &nbsp; (zero) top of page
+    </p>
+    <p class="keyhelp">
+        <span class="key">1</span> &nbsp; (one) first highlighted chunk
+    </p>
+    </div>
+</div>
+<div id="source">
+    <p id="t1" class="pln"><span class="n"><a href="#t1">1</a></span><span class="t"><span class="str">"""</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t2" class="pln"><span class="n"><a href="#t2">2</a></span><span class="t"><span class="str">Each geolocation service you might use, such as Google Maps, Bing Maps, or</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t3" class="pln"><span class="n"><a href="#t3">3</a></span><span class="t"><span class="str">Nominatim, has its own class in ``geopy.geocoders`` abstracting the service's</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t4" class="pln"><span class="n"><a href="#t4">4</a></span><span class="t"><span class="str">API. Geocoders each define at least a ``geocode`` method, for resolving a</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t5" class="pln"><span class="n"><a href="#t5">5</a></span><span class="t"><span class="str">location from a string, and may define a ``reverse`` method, which resolves a</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t6" class="pln"><span class="n"><a href="#t6">6</a></span><span class="t"><span class="str">pair of coordinates to an address. Each Geocoder accepts any credentials</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t7" class="pln"><span class="n"><a href="#t7">7</a></span><span class="t"><span class="str">or settings needed to interact with its service, e.g., an API key or</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t8" class="pln"><span class="n"><a href="#t8">8</a></span><span class="t"><span class="str">locale, during its initialization.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t9" class="pln"><span class="n"><a href="#t9">9</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t10" class="pln"><span class="n"><a href="#t10">10</a></span><span class="t"><span class="str">To geolocate a query to an address and coordinates:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t11" class="pln"><span class="n"><a href="#t11">11</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t12" class="pln"><span class="n"><a href="#t12">12</a></span><span class="t"><span class="str">    >>> from geopy.geocoders import Nominatim</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t13" class="pln"><span class="n"><a href="#t13">13</a></span><span class="t"><span class="str">    >>> geolocator = Nominatim(user_agent="specify_your_app_name_here")</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t14" class="pln"><span class="n"><a href="#t14">14</a></span><span class="t"><span class="str">    >>> location = geolocator.geocode("175 5th Avenue NYC")</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t15" class="pln"><span class="n"><a href="#t15">15</a></span><span class="t"><span class="str">    >>> print(location.address)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t16" class="pln"><span class="n"><a href="#t16">16</a></span><span class="t"><span class="str">    Flatiron Building, 175, 5th Avenue, Flatiron, New York, NYC, New York, ...</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t17" class="pln"><span class="n"><a href="#t17">17</a></span><span class="t"><span class="str">    >>> print((location.latitude, location.longitude))</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t18" class="pln"><span class="n"><a href="#t18">18</a></span><span class="t"><span class="str">    (40.7410861, -73.9896297241625)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t19" class="pln"><span class="n"><a href="#t19">19</a></span><span class="t"><span class="str">    >>> print(location.raw)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t20" class="pln"><span class="n"><a href="#t20">20</a></span><span class="t"><span class="str">    {'place_id': '9167009604', 'type': 'attraction', ...}</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t21" class="pln"><span class="n"><a href="#t21">21</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t22" class="pln"><span class="n"><a href="#t22">22</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t23" class="pln"><span class="n"><a href="#t23">23</a></span><span class="t"><span class="str">To find the address corresponding to a set of coordinates:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t24" class="pln"><span class="n"><a href="#t24">24</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t25" class="pln"><span class="n"><a href="#t25">25</a></span><span class="t"><span class="str">    >>> from geopy.geocoders import Nominatim</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t26" class="pln"><span class="n"><a href="#t26">26</a></span><span class="t"><span class="str">    >>> geolocator = Nominatim(user_agent="specify_your_app_name_here")</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t27" class="pln"><span class="n"><a href="#t27">27</a></span><span class="t"><span class="str">    >>> location = geolocator.reverse("52.509669, 13.376294")</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t28" class="pln"><span class="n"><a href="#t28">28</a></span><span class="t"><span class="str">    >>> print(location.address)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t29" class="pln"><span class="n"><a href="#t29">29</a></span><span class="t"><span class="str">    Potsdamer Platz, Mitte, Berlin, 10117, Deutschland, European Union</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t30" class="pln"><span class="n"><a href="#t30">30</a></span><span class="t"><span class="str">    >>> print((location.latitude, location.longitude))</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t31" class="pln"><span class="n"><a href="#t31">31</a></span><span class="t"><span class="str">    (52.5094982, 13.3765983)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t32" class="pln"><span class="n"><a href="#t32">32</a></span><span class="t"><span class="str">    >>> print(location.raw)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t33" class="pln"><span class="n"><a href="#t33">33</a></span><span class="t"><span class="str">    {'place_id': '654513', 'osm_type': 'node', ...}</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t34" class="pln"><span class="n"><a href="#t34">34</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t35" class="pln"><span class="n"><a href="#t35">35</a></span><span class="t"><span class="str">Locators' ``geocode`` and ``reverse`` methods require the argument ``query``,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t36" class="pln"><span class="n"><a href="#t36">36</a></span><span class="t"><span class="str">and also accept at least the argument ``exactly_one``, which is ``True`` by</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t37" class="pln"><span class="n"><a href="#t37">37</a></span><span class="t"><span class="str">default.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t38" class="pln"><span class="n"><a href="#t38">38</a></span><span class="t"><span class="str">Geocoders may have additional attributes, e.g., Bing accepts ``user_location``,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t39" class="pln"><span class="n"><a href="#t39">39</a></span><span class="t"><span class="str">the effect of which is to bias results near that location. ``geocode``</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t40" class="pln"><span class="n"><a href="#t40">40</a></span><span class="t"><span class="str">and ``reverse`` methods  may return three types of values:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t41" class="pln"><span class="n"><a href="#t41">41</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t42" class="pln"><span class="n"><a href="#t42">42</a></span><span class="t"><span class="str">- When there are no results found, returns ``None``.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t43" class="pln"><span class="n"><a href="#t43">43</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t44" class="pln"><span class="n"><a href="#t44">44</a></span><span class="t"><span class="str">- When the method's ``exactly_one`` argument is ``True`` and at least one</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t45" class="pln"><span class="n"><a href="#t45">45</a></span><span class="t"><span class="str">  result is found, returns a :class:`geopy.location.Location` object, which</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t46" class="pln"><span class="n"><a href="#t46">46</a></span><span class="t"><span class="str">  can be iterated over as:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t47" class="pln"><span class="n"><a href="#t47">47</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t48" class="pln"><span class="n"><a href="#t48">48</a></span><span class="t"><span class="str">    ``(address&lt;String>, (latitude&lt;Float>, longitude&lt;Float>))``</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t49" class="pln"><span class="n"><a href="#t49">49</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t50" class="pln"><span class="n"><a href="#t50">50</a></span><span class="t"><span class="str">  Or can be accessed as ``location.address``, ``location.latitude``,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t51" class="pln"><span class="n"><a href="#t51">51</a></span><span class="t"><span class="str">  ``location.longitude``, ``location.altitude``, and ``location.raw``. The</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t52" class="pln"><span class="n"><a href="#t52">52</a></span><span class="t"><span class="str">  last contains the full geocoder's response for this result.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t53" class="pln"><span class="n"><a href="#t53">53</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t54" class="pln"><span class="n"><a href="#t54">54</a></span><span class="t"><span class="str">- When ``exactly_one`` is ``False``, and there is at least one result, returns a</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t55" class="pln"><span class="n"><a href="#t55">55</a></span><span class="t"><span class="str">  list of :class:`geopy.location.Location` objects, as above:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t56" class="pln"><span class="n"><a href="#t56">56</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t57" class="pln"><span class="n"><a href="#t57">57</a></span><span class="t"><span class="str">    ``[location, [...]]``</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t58" class="pln"><span class="n"><a href="#t58">58</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t59" class="pln"><span class="n"><a href="#t59">59</a></span><span class="t"><span class="str">If a service is unavailable or otherwise returns a non-OK response, or doesn't</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t60" class="pln"><span class="n"><a href="#t60">60</a></span><span class="t"><span class="str">receive a response in the allotted timeout, you will receive one of the</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t61" class="pln"><span class="n"><a href="#t61">61</a></span><span class="t"><span class="str">`Exceptions`_ detailed below.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t62" class="pln"><span class="n"><a href="#t62">62</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t63" class="pln"><span class="n"><a href="#t63">63</a></span><span class="t"><span class="str">.. _specifying_parameters_once:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t64" class="pln"><span class="n"><a href="#t64">64</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t65" class="pln"><span class="n"><a href="#t65">65</a></span><span class="t"><span class="str">Specifying Parameters Once</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t66" class="pln"><span class="n"><a href="#t66">66</a></span><span class="t"><span class="str">~~~~~~~~~~~~~~~~~~~~~~~~~~</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t67" class="pln"><span class="n"><a href="#t67">67</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t68" class="pln"><span class="n"><a href="#t68">68</a></span><span class="t"><span class="str">Geocoding methods accept a lot of different parameters, and you would</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t69" class="pln"><span class="n"><a href="#t69">69</a></span><span class="t"><span class="str">probably want to specify some of them just once and not care about them</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t70" class="pln"><span class="n"><a href="#t70">70</a></span><span class="t"><span class="str">later.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t71" class="pln"><span class="n"><a href="#t71">71</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t72" class="pln"><span class="n"><a href="#t72">72</a></span><span class="t"><span class="str">This is easy to achieve with Python's :func:`functools.partial`::</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t73" class="pln"><span class="n"><a href="#t73">73</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t74" class="pln"><span class="n"><a href="#t74">74</a></span><span class="t"><span class="str">    >>> from functools import partial</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t75" class="pln"><span class="n"><a href="#t75">75</a></span><span class="t"><span class="str">    >>> from geopy.geocoders import Nominatim</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t76" class="pln"><span class="n"><a href="#t76">76</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t77" class="pln"><span class="n"><a href="#t77">77</a></span><span class="t"><span class="str">    >>> geolocator = Nominatim(user_agent="specify_your_app_name_here")</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t78" class="pln"><span class="n"><a href="#t78">78</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t79" class="pln"><span class="n"><a href="#t79">79</a></span><span class="t"><span class="str">    >>> geocode = partial(geolocator.geocode, language="es")</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t80" class="pln"><span class="n"><a href="#t80">80</a></span><span class="t"><span class="str">    >>> print(geocode("london"))</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t81" class="pln"><span class="n"><a href="#t81">81</a></span><span class="t"><span class="str">    Londres, Greater London, Inglaterra, SW1A 2DX, Gran Breta&#241;a</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t82" class="pln"><span class="n"><a href="#t82">82</a></span><span class="t"><span class="str">    >>> print(geocode("paris"))</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t83" class="pln"><span class="n"><a href="#t83">83</a></span><span class="t"><span class="str">    Par&#237;s, Isla de Francia, Francia metropolitana, Francia</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t84" class="pln"><span class="n"><a href="#t84">84</a></span><span class="t"><span class="str">    >>> print(geocode("paris", language="en"))</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t85" class="pln"><span class="n"><a href="#t85">85</a></span><span class="t"><span class="str">    Paris, Ile-de-France, Metropolitan France, France</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t86" class="pln"><span class="n"><a href="#t86">86</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t87" class="pln"><span class="n"><a href="#t87">87</a></span><span class="t"><span class="str">    >>> reverse = partial(geolocator.reverse, language="es")</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t88" class="pln"><span class="n"><a href="#t88">88</a></span><span class="t"><span class="str">    >>> print(reverse("52.509669, 13.376294"))</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t89" class="pln"><span class="n"><a href="#t89">89</a></span><span class="t"><span class="str">    Steinecke, Potsdamer Platz, Tiergarten, Mitte, 10785, Alemania</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t90" class="pln"><span class="n"><a href="#t90">90</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t91" class="pln"><span class="n"><a href="#t91">91</a></span><span class="t"><span class="str">If you need to modify the query, you can also use a one-liner with lambda.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t92" class="pln"><span class="n"><a href="#t92">92</a></span><span class="t"><span class="str">For example, if you only need to geocode locations in `Cleveland, Ohio`,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t93" class="pln"><span class="n"><a href="#t93">93</a></span><span class="t"><span class="str">you could do::</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t94" class="pln"><span class="n"><a href="#t94">94</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t95" class="pln"><span class="n"><a href="#t95">95</a></span><span class="t"><span class="str">    >>> geocode = lambda query: geolocator.geocode("%s, Cleveland OH" % query)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t96" class="pln"><span class="n"><a href="#t96">96</a></span><span class="t"><span class="str">    >>> print(geocode("11111 Euclid Ave"))</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t97" class="pln"><span class="n"><a href="#t97">97</a></span><span class="t"><span class="str">    Thwing Center, Euclid Avenue, Magnolia-Wade Park Historic District,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t98" class="pln"><span class="n"><a href="#t98">98</a></span><span class="t"><span class="str">    University Circle, Cleveland, Cuyahoga County, Ohio, 44106, United States</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t99" class="pln"><span class="n"><a href="#t99">99</a></span><span class="t"><span class="str">    of America</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t100" class="pln"><span class="n"><a href="#t100">100</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t101" class="pln"><span class="n"><a href="#t101">101</a></span><span class="t"><span class="str">That lambda doesn't accept kwargs. If you need them, you could do::</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t102" class="pln"><span class="n"><a href="#t102">102</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t103" class="pln"><span class="n"><a href="#t103">103</a></span><span class="t"><span class="str">    >>> _geocode = partial(geolocator.geocode, language="es")</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t104" class="pln"><span class="n"><a href="#t104">104</a></span><span class="t"><span class="str">    >>> geocode = lambda query, **kw: _geocode("%s, Cleveland OH" % query, **kw)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t105" class="pln"><span class="n"><a href="#t105">105</a></span><span class="t"><span class="str">    >>> print(geocode("11111 Euclid Ave"))</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t106" class="pln"><span class="n"><a href="#t106">106</a></span><span class="t"><span class="str">    Thwing Center, Euclid Avenue, Magnolia-Wade Park Historic District,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t107" class="pln"><span class="n"><a href="#t107">107</a></span><span class="t"><span class="str">    University Circle, Cleveland, Cuyahoga County, Ohio, 44106, Estados Unidos</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t108" class="pln"><span class="n"><a href="#t108">108</a></span><span class="t"><span class="str">    >>> print(geocode("11111 Euclid Ave", language="en"))</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t109" class="pln"><span class="n"><a href="#t109">109</a></span><span class="t"><span class="str">    Thwing Center, Euclid Avenue, Magnolia-Wade Park Historic District,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t110" class="pln"><span class="n"><a href="#t110">110</a></span><span class="t"><span class="str">    University Circle, Cleveland, Cuyahoga County, Ohio, 44106, United States</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t111" class="pln"><span class="n"><a href="#t111">111</a></span><span class="t"><span class="str">    of America</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t112" class="pln"><span class="n"><a href="#t112">112</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t113" class="pln"><span class="n"><a href="#t113">113</a></span><span class="t"><span class="str">Geopy Is Not a Service</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t114" class="pln"><span class="n"><a href="#t114">114</a></span><span class="t"><span class="str">~~~~~~~~~~~~~~~~~~~~~~</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t115" class="pln"><span class="n"><a href="#t115">115</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t116" class="pln"><span class="n"><a href="#t116">116</a></span><span class="t"><span class="str">Geocoding is provided by a number of different services, which are not</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t117" class="pln"><span class="n"><a href="#t117">117</a></span><span class="t"><span class="str">affiliated with geopy in any way. These services provide APIs, which anyone</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t118" class="pln"><span class="n"><a href="#t118">118</a></span><span class="t"><span class="str">could implement, and geopy is just a library which provides these</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t119" class="pln"><span class="n"><a href="#t119">119</a></span><span class="t"><span class="str">implementations for many different services in a single package.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t120" class="pln"><span class="n"><a href="#t120">120</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t121" class="pln"><span class="n"><a href="#t121">121</a></span><span class="t"><span class="str">.. image:: ./_static/geopy_and_geocoding_services.svg</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t122" class="pln"><span class="n"><a href="#t122">122</a></span><span class="t"><span class="str">   :target: ./_static/geopy_and_geocoding_services.svg</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t123" class="pln"><span class="n"><a href="#t123">123</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t124" class="pln"><span class="n"><a href="#t124">124</a></span><span class="t"><span class="str">Therefore:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t125" class="pln"><span class="n"><a href="#t125">125</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t126" class="pln"><span class="n"><a href="#t126">126</a></span><span class="t"><span class="str">1. Different services have different Terms of Use, quotas, pricing,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t127" class="pln"><span class="n"><a href="#t127">127</a></span><span class="t"><span class="str">   geodatabases and so on. For example, :class:`.Nominatim`</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t128" class="pln"><span class="n"><a href="#t128">128</a></span><span class="t"><span class="str">   is free, but provides low request limits. If you need to make more queries,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t129" class="pln"><span class="n"><a href="#t129">129</a></span><span class="t"><span class="str">   consider using another (probably paid) service, such as</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t130" class="pln"><span class="n"><a href="#t130">130</a></span><span class="t"><span class="str">   :class:`.OpenMapQuest` or :class:`.PickPoint`</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t131" class="pln"><span class="n"><a href="#t131">131</a></span><span class="t"><span class="str">   (these two are commercial providers of Nominatim, so they should</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t132" class="pln"><span class="n"><a href="#t132">132</a></span><span class="t"><span class="str">   have the same data and APIs). Or, if you are ready to wait, you can try</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t133" class="pln"><span class="n"><a href="#t133">133</a></span><span class="t"><span class="str">   :mod:`geopy.extra.rate_limiter`.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t134" class="pln"><span class="n"><a href="#t134">134</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t135" class="pln"><span class="n"><a href="#t135">135</a></span><span class="t"><span class="str">2. geopy cannot be responsible for the geocoding services' databases.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t136" class="pln"><span class="n"><a href="#t136">136</a></span><span class="t"><span class="str">   If you have issues with some queries which the service cannot fulfill,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t137" class="pln"><span class="n"><a href="#t137">137</a></span><span class="t"><span class="str">   it should be directed to that service's support team.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t138" class="pln"><span class="n"><a href="#t138">138</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t139" class="pln"><span class="n"><a href="#t139">139</a></span><span class="t"><span class="str">3. geopy cannot be responsible for any networking issues between your computer</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t140" class="pln"><span class="n"><a href="#t140">140</a></span><span class="t"><span class="str">   and the geocoding service.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t141" class="pln"><span class="n"><a href="#t141">141</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t142" class="pln"><span class="n"><a href="#t142">142</a></span><span class="t"><span class="str">If you face any problem with your current geocoding service provider, you can</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t143" class="pln"><span class="n"><a href="#t143">143</a></span><span class="t"><span class="str">always try a different one.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t144" class="pln"><span class="n"><a href="#t144">144</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t145" class="pln"><span class="n"><a href="#t145">145</a></span><span class="t"><span class="str">.. _async_mode:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t146" class="pln"><span class="n"><a href="#t146">146</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t147" class="pln"><span class="n"><a href="#t147">147</a></span><span class="t"><span class="str">Async Mode</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t148" class="pln"><span class="n"><a href="#t148">148</a></span><span class="t"><span class="str">~~~~~~~~~~</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t149" class="pln"><span class="n"><a href="#t149">149</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t150" class="pln"><span class="n"><a href="#t150">150</a></span><span class="t"><span class="str">By default geopy geocoders are synchronous (i.e. they use an Adapter</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t151" class="pln"><span class="n"><a href="#t151">151</a></span><span class="t"><span class="str">based on :class:`.BaseSyncAdapter`).</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t152" class="pln"><span class="n"><a href="#t152">152</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t153" class="pln"><span class="n"><a href="#t153">153</a></span><span class="t"><span class="str">All geocoders can be used with asyncio by simply switching to an</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t154" class="pln"><span class="n"><a href="#t154">154</a></span><span class="t"><span class="str">Adapter based on :class:`.BaseAsyncAdapter` (like :class:`.AioHTTPAdapter`).</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t155" class="pln"><span class="n"><a href="#t155">155</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t156" class="pln"><span class="n"><a href="#t156">156</a></span><span class="t"><span class="str">Example::</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t157" class="pln"><span class="n"><a href="#t157">157</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t158" class="pln"><span class="n"><a href="#t158">158</a></span><span class="t"><span class="str">    from geopy.adapters import AioHTTPAdapter</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t159" class="pln"><span class="n"><a href="#t159">159</a></span><span class="t"><span class="str">    from geopy.geocoders import Nominatim</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t160" class="pln"><span class="n"><a href="#t160">160</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t161" class="pln"><span class="n"><a href="#t161">161</a></span><span class="t"><span class="str">    async with Nominatim(</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t162" class="pln"><span class="n"><a href="#t162">162</a></span><span class="t"><span class="str">        user_agent="specify_your_app_name_here",</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t163" class="pln"><span class="n"><a href="#t163">163</a></span><span class="t"><span class="str">        adapter_factory=AioHTTPAdapter,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t164" class="pln"><span class="n"><a href="#t164">164</a></span><span class="t"><span class="str">    ) as geolocator:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t165" class="pln"><span class="n"><a href="#t165">165</a></span><span class="t"><span class="str">        location = await geolocator.geocode("175 5th Avenue NYC")</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t166" class="pln"><span class="n"><a href="#t166">166</a></span><span class="t"><span class="str">        print(location.address)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t167" class="pln"><span class="n"><a href="#t167">167</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t168" class="pln"><span class="n"><a href="#t168">168</a></span><span class="t"><span class="str">Basically the usage is the same as in synchronous mode, except that</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t169" class="pln"><span class="n"><a href="#t169">169</a></span><span class="t"><span class="str">all geocoder calls should be used with ``await``, and the geocoder</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t170" class="pln"><span class="n"><a href="#t170">170</a></span><span class="t"><span class="str">instance should be created by ``async with``. The context manager is optional,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t171" class="pln"><span class="n"><a href="#t171">171</a></span><span class="t"><span class="str">however, it is strongly advised to use it to avoid resources leaks.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t172" class="pln"><span class="n"><a href="#t172">172</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t173" class="pln"><span class="n"><a href="#t173">173</a></span><span class="t"><span class="str">"""</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t174" class="pln"><span class="n"><a href="#t174">174</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t175" class="run"><span class="n"><a href="#t175">175</a></span><span class="t"><span class="nam">__all__</span> <span class="op">=</span> <span class="op">(</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t176" class="pln"><span class="n"><a href="#t176">176</a></span><span class="t">    <span class="str">"get_geocoder_for_service"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t177" class="pln"><span class="n"><a href="#t177">177</a></span><span class="t">    <span class="str">"options"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t178" class="pln"><span class="n"><a href="#t178">178</a></span><span class="t">    <span class="com"># The order of classes below should correspond to the order of their</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t179" class="pln"><span class="n"><a href="#t179">179</a></span><span class="t">    <span class="com"># files in the ``geocoders`` directory ordered by name.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t180" class="pln"><span class="n"><a href="#t180">180</a></span><span class="t">    <span class="com">#</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t181" class="pln"><span class="n"><a href="#t181">181</a></span><span class="t">    <span class="com"># If you're adding a new geocoder class, then you should mention it in</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t182" class="pln"><span class="n"><a href="#t182">182</a></span><span class="t">    <span class="com"># this module 3 times:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t183" class="pln"><span class="n"><a href="#t183">183</a></span><span class="t">    <span class="com"># 1. In this ``__all__`` tuple.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t184" class="pln"><span class="n"><a href="#t184">184</a></span><span class="t">    <span class="com"># 2. In the imports block below.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t185" class="pln"><span class="n"><a href="#t185">185</a></span><span class="t">    <span class="com"># 3. In the ``SERVICE_TO_GEOCODER`` dict below.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t186" class="pln"><span class="n"><a href="#t186">186</a></span><span class="t">    <span class="com">#</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t187" class="pln"><span class="n"><a href="#t187">187</a></span><span class="t">    <span class="com"># Also don't forget to pull up the list of geocoders</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t188" class="pln"><span class="n"><a href="#t188">188</a></span><span class="t">    <span class="com"># in the docs: docs/index.rst</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t189" class="pln"><span class="n"><a href="#t189">189</a></span><span class="t">    <span class="str">"AlgoliaPlaces"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t190" class="pln"><span class="n"><a href="#t190">190</a></span><span class="t">    <span class="str">"ArcGIS"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t191" class="pln"><span class="n"><a href="#t191">191</a></span><span class="t">    <span class="str">"AzureMaps"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t192" class="pln"><span class="n"><a href="#t192">192</a></span><span class="t">    <span class="str">"Baidu"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t193" class="pln"><span class="n"><a href="#t193">193</a></span><span class="t">    <span class="str">"BaiduV3"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t194" class="pln"><span class="n"><a href="#t194">194</a></span><span class="t">    <span class="str">"BANFrance"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t195" class="pln"><span class="n"><a href="#t195">195</a></span><span class="t">    <span class="str">"Bing"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t196" class="pln"><span class="n"><a href="#t196">196</a></span><span class="t">    <span class="str">"DataBC"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t197" class="pln"><span class="n"><a href="#t197">197</a></span><span class="t">    <span class="str">"GeocodeEarth"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t198" class="pln"><span class="n"><a href="#t198">198</a></span><span class="t">    <span class="str">"Geocodio"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t199" class="pln"><span class="n"><a href="#t199">199</a></span><span class="t">    <span class="str">"GeoNames"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t200" class="pln"><span class="n"><a href="#t200">200</a></span><span class="t">    <span class="str">"GoogleV3"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t201" class="pln"><span class="n"><a href="#t201">201</a></span><span class="t">    <span class="str">"Geolake"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t202" class="pln"><span class="n"><a href="#t202">202</a></span><span class="t">    <span class="str">"Here"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t203" class="pln"><span class="n"><a href="#t203">203</a></span><span class="t">    <span class="str">"HereV7"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t204" class="pln"><span class="n"><a href="#t204">204</a></span><span class="t">    <span class="str">"IGNFrance"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t205" class="pln"><span class="n"><a href="#t205">205</a></span><span class="t">    <span class="str">"MapBox"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t206" class="pln"><span class="n"><a href="#t206">206</a></span><span class="t">    <span class="str">"MapQuest"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t207" class="pln"><span class="n"><a href="#t207">207</a></span><span class="t">    <span class="str">"MapTiler"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t208" class="pln"><span class="n"><a href="#t208">208</a></span><span class="t">    <span class="str">"Nominatim"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t209" class="pln"><span class="n"><a href="#t209">209</a></span><span class="t">    <span class="str">"OpenCage"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t210" class="pln"><span class="n"><a href="#t210">210</a></span><span class="t">    <span class="str">"OpenMapQuest"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t211" class="pln"><span class="n"><a href="#t211">211</a></span><span class="t">    <span class="str">"PickPoint"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t212" class="pln"><span class="n"><a href="#t212">212</a></span><span class="t">    <span class="str">"Pelias"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t213" class="pln"><span class="n"><a href="#t213">213</a></span><span class="t">    <span class="str">"Photon"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t214" class="pln"><span class="n"><a href="#t214">214</a></span><span class="t">    <span class="str">"LiveAddress"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t215" class="pln"><span class="n"><a href="#t215">215</a></span><span class="t">    <span class="str">"TomTom"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t216" class="pln"><span class="n"><a href="#t216">216</a></span><span class="t">    <span class="str">"What3Words"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t217" class="pln"><span class="n"><a href="#t217">217</a></span><span class="t">    <span class="str">"What3WordsV3"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t218" class="pln"><span class="n"><a href="#t218">218</a></span><span class="t">    <span class="str">"Yandex"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t219" class="pln"><span class="n"><a href="#t219">219</a></span><span class="t"><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t220" class="pln"><span class="n"><a href="#t220">220</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t221" class="pln"><span class="n"><a href="#t221">221</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t222" class="run"><span class="n"><a href="#t222">222</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">exc</span> <span class="key">import</span> <span class="nam">GeocoderNotFound</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t223" class="run"><span class="n"><a href="#t223">223</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">algolia</span> <span class="key">import</span> <span class="nam">AlgoliaPlaces</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t224" class="run"><span class="n"><a href="#t224">224</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">arcgis</span> <span class="key">import</span> <span class="nam">ArcGIS</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t225" class="run"><span class="n"><a href="#t225">225</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">azure</span> <span class="key">import</span> <span class="nam">AzureMaps</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t226" class="run"><span class="n"><a href="#t226">226</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">baidu</span> <span class="key">import</span> <span class="nam">Baidu</span><span class="op">,</span> <span class="nam">BaiduV3</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t227" class="run"><span class="n"><a href="#t227">227</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">banfrance</span> <span class="key">import</span> <span class="nam">BANFrance</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t228" class="run"><span class="n"><a href="#t228">228</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">base</span> <span class="key">import</span> <span class="nam">options</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t229" class="run"><span class="n"><a href="#t229">229</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">bing</span> <span class="key">import</span> <span class="nam">Bing</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t230" class="run"><span class="n"><a href="#t230">230</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">databc</span> <span class="key">import</span> <span class="nam">DataBC</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t231" class="run"><span class="n"><a href="#t231">231</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">geocodeearth</span> <span class="key">import</span> <span class="nam">GeocodeEarth</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t232" class="run"><span class="n"><a href="#t232">232</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">geocodio</span> <span class="key">import</span> <span class="nam">Geocodio</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t233" class="run"><span class="n"><a href="#t233">233</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">geolake</span> <span class="key">import</span> <span class="nam">Geolake</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t234" class="run"><span class="n"><a href="#t234">234</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">geonames</span> <span class="key">import</span> <span class="nam">GeoNames</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t235" class="run"><span class="n"><a href="#t235">235</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">google</span> <span class="key">import</span> <span class="nam">GoogleV3</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t236" class="run"><span class="n"><a href="#t236">236</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">here</span> <span class="key">import</span> <span class="nam">Here</span><span class="op">,</span> <span class="nam">HereV7</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t237" class="run"><span class="n"><a href="#t237">237</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">ignfrance</span> <span class="key">import</span> <span class="nam">IGNFrance</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t238" class="run"><span class="n"><a href="#t238">238</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">mapbox</span> <span class="key">import</span> <span class="nam">MapBox</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t239" class="run"><span class="n"><a href="#t239">239</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">mapquest</span> <span class="key">import</span> <span class="nam">MapQuest</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t240" class="run"><span class="n"><a href="#t240">240</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">maptiler</span> <span class="key">import</span> <span class="nam">MapTiler</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t241" class="run"><span class="n"><a href="#t241">241</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">nominatim</span> <span class="key">import</span> <span class="nam">Nominatim</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t242" class="run"><span class="n"><a href="#t242">242</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">opencage</span> <span class="key">import</span> <span class="nam">OpenCage</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t243" class="run"><span class="n"><a href="#t243">243</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">openmapquest</span> <span class="key">import</span> <span class="nam">OpenMapQuest</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t244" class="run"><span class="n"><a href="#t244">244</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">pelias</span> <span class="key">import</span> <span class="nam">Pelias</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t245" class="run"><span class="n"><a href="#t245">245</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">photon</span> <span class="key">import</span> <span class="nam">Photon</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t246" class="run"><span class="n"><a href="#t246">246</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">pickpoint</span> <span class="key">import</span> <span class="nam">PickPoint</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t247" class="run"><span class="n"><a href="#t247">247</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">smartystreets</span> <span class="key">import</span> <span class="nam">LiveAddress</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t248" class="run"><span class="n"><a href="#t248">248</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">tomtom</span> <span class="key">import</span> <span class="nam">TomTom</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t249" class="run"><span class="n"><a href="#t249">249</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">what3words</span> <span class="key">import</span> <span class="nam">What3Words</span><span class="op">,</span> <span class="nam">What3WordsV3</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t250" class="run"><span class="n"><a href="#t250">250</a></span><span class="t"><span class="key">from</span> <span class="nam">geopy</span><span class="op">.</span><span class="nam">geocoders</span><span class="op">.</span><span class="nam">yandex</span> <span class="key">import</span> <span class="nam">Yandex</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t251" class="pln"><span class="n"><a href="#t251">251</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t252" class="run"><span class="n"><a href="#t252">252</a></span><span class="t"><span class="nam">SERVICE_TO_GEOCODER</span> <span class="op">=</span> <span class="op">{</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t253" class="pln"><span class="n"><a href="#t253">253</a></span><span class="t">    <span class="str">"algolia"</span><span class="op">:</span> <span class="nam">AlgoliaPlaces</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t254" class="pln"><span class="n"><a href="#t254">254</a></span><span class="t">    <span class="str">"arcgis"</span><span class="op">:</span> <span class="nam">ArcGIS</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t255" class="pln"><span class="n"><a href="#t255">255</a></span><span class="t">    <span class="str">"azure"</span><span class="op">:</span> <span class="nam">AzureMaps</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t256" class="pln"><span class="n"><a href="#t256">256</a></span><span class="t">    <span class="str">"baidu"</span><span class="op">:</span> <span class="nam">Baidu</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t257" class="pln"><span class="n"><a href="#t257">257</a></span><span class="t">    <span class="str">"baiduv3"</span><span class="op">:</span> <span class="nam">BaiduV3</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t258" class="pln"><span class="n"><a href="#t258">258</a></span><span class="t">    <span class="str">"banfrance"</span><span class="op">:</span> <span class="nam">BANFrance</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t259" class="pln"><span class="n"><a href="#t259">259</a></span><span class="t">    <span class="str">"bing"</span><span class="op">:</span> <span class="nam">Bing</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t260" class="pln"><span class="n"><a href="#t260">260</a></span><span class="t">    <span class="str">"databc"</span><span class="op">:</span> <span class="nam">DataBC</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t261" class="pln"><span class="n"><a href="#t261">261</a></span><span class="t">    <span class="str">"geocodeearth"</span><span class="op">:</span> <span class="nam">GeocodeEarth</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t262" class="pln"><span class="n"><a href="#t262">262</a></span><span class="t">    <span class="str">"geocodio"</span><span class="op">:</span> <span class="nam">Geocodio</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t263" class="pln"><span class="n"><a href="#t263">263</a></span><span class="t">    <span class="str">"geonames"</span><span class="op">:</span> <span class="nam">GeoNames</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t264" class="pln"><span class="n"><a href="#t264">264</a></span><span class="t">    <span class="str">"google"</span><span class="op">:</span> <span class="nam">GoogleV3</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t265" class="pln"><span class="n"><a href="#t265">265</a></span><span class="t">    <span class="str">"googlev3"</span><span class="op">:</span> <span class="nam">GoogleV3</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t266" class="pln"><span class="n"><a href="#t266">266</a></span><span class="t">    <span class="str">"geolake"</span><span class="op">:</span> <span class="nam">Geolake</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t267" class="pln"><span class="n"><a href="#t267">267</a></span><span class="t">    <span class="str">"here"</span><span class="op">:</span> <span class="nam">Here</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t268" class="pln"><span class="n"><a href="#t268">268</a></span><span class="t">    <span class="str">"herev7"</span><span class="op">:</span> <span class="nam">HereV7</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t269" class="pln"><span class="n"><a href="#t269">269</a></span><span class="t">    <span class="str">"ignfrance"</span><span class="op">:</span> <span class="nam">IGNFrance</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t270" class="pln"><span class="n"><a href="#t270">270</a></span><span class="t">    <span class="str">"mapbox"</span><span class="op">:</span> <span class="nam">MapBox</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t271" class="pln"><span class="n"><a href="#t271">271</a></span><span class="t">    <span class="str">"mapquest"</span><span class="op">:</span> <span class="nam">MapQuest</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t272" class="pln"><span class="n"><a href="#t272">272</a></span><span class="t">    <span class="str">"maptiler"</span><span class="op">:</span> <span class="nam">MapTiler</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t273" class="pln"><span class="n"><a href="#t273">273</a></span><span class="t">    <span class="str">"nominatim"</span><span class="op">:</span> <span class="nam">Nominatim</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t274" class="pln"><span class="n"><a href="#t274">274</a></span><span class="t">    <span class="str">"opencage"</span><span class="op">:</span> <span class="nam">OpenCage</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t275" class="pln"><span class="n"><a href="#t275">275</a></span><span class="t">    <span class="str">"openmapquest"</span><span class="op">:</span> <span class="nam">OpenMapQuest</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t276" class="pln"><span class="n"><a href="#t276">276</a></span><span class="t">    <span class="str">"pickpoint"</span><span class="op">:</span> <span class="nam">PickPoint</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t277" class="pln"><span class="n"><a href="#t277">277</a></span><span class="t">    <span class="str">"pelias"</span><span class="op">:</span> <span class="nam">Pelias</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t278" class="pln"><span class="n"><a href="#t278">278</a></span><span class="t">    <span class="str">"photon"</span><span class="op">:</span> <span class="nam">Photon</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t279" class="pln"><span class="n"><a href="#t279">279</a></span><span class="t">    <span class="str">"liveaddress"</span><span class="op">:</span> <span class="nam">LiveAddress</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t280" class="pln"><span class="n"><a href="#t280">280</a></span><span class="t">    <span class="str">"tomtom"</span><span class="op">:</span> <span class="nam">TomTom</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t281" class="pln"><span class="n"><a href="#t281">281</a></span><span class="t">    <span class="str">"what3words"</span><span class="op">:</span> <span class="nam">What3Words</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t282" class="pln"><span class="n"><a href="#t282">282</a></span><span class="t">    <span class="str">"what3wordsv3"</span><span class="op">:</span> <span class="nam">What3WordsV3</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t283" class="pln"><span class="n"><a href="#t283">283</a></span><span class="t">    <span class="str">"yandex"</span><span class="op">:</span> <span class="nam">Yandex</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t284" class="pln"><span class="n"><a href="#t284">284</a></span><span class="t"><span class="op">}</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t285" class="pln"><span class="n"><a href="#t285">285</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t286" class="pln"><span class="n"><a href="#t286">286</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t287" class="run"><span class="n"><a href="#t287">287</a></span><span class="t"><span class="key">def</span> <span class="nam">get_geocoder_for_service</span><span class="op">(</span><span class="nam">service</span><span class="op">)</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t288" class="pln"><span class="n"><a href="#t288">288</a></span><span class="t">    <span class="str">"""</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t289" class="pln"><span class="n"><a href="#t289">289</a></span><span class="t"><span class="str">    For the service provided, try to return a geocoder class.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t290" class="pln"><span class="n"><a href="#t290">290</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t291" class="pln"><span class="n"><a href="#t291">291</a></span><span class="t"><span class="str">    >>> from geopy.geocoders import get_geocoder_for_service</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t292" class="pln"><span class="n"><a href="#t292">292</a></span><span class="t"><span class="str">    >>> get_geocoder_for_service("nominatim")</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t293" class="pln"><span class="n"><a href="#t293">293</a></span><span class="t"><span class="str">    geopy.geocoders.nominatim.Nominatim</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t294" class="pln"><span class="n"><a href="#t294">294</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t295" class="pln"><span class="n"><a href="#t295">295</a></span><span class="t"><span class="str">    If the string given is not recognized, a</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t296" class="pln"><span class="n"><a href="#t296">296</a></span><span class="t"><span class="str">    :class:`geopy.exc.GeocoderNotFound` exception is raised.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t297" class="pln"><span class="n"><a href="#t297">297</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t298" class="pln"><span class="n"><a href="#t298">298</a></span><span class="t"><span class="str">    Given that almost all of the geocoders provide the ``geocode``</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t299" class="pln"><span class="n"><a href="#t299">299</a></span><span class="t"><span class="str">    method it could be used to make basic queries based entirely</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t300" class="pln"><span class="n"><a href="#t300">300</a></span><span class="t"><span class="str">    on user input::</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t301" class="pln"><span class="n"><a href="#t301">301</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t302" class="pln"><span class="n"><a href="#t302">302</a></span><span class="t"><span class="str">        from geopy.geocoders import get_geocoder_for_service</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t303" class="pln"><span class="n"><a href="#t303">303</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t304" class="pln"><span class="n"><a href="#t304">304</a></span><span class="t"><span class="str">        def geocode(geocoder, config, query):</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t305" class="pln"><span class="n"><a href="#t305">305</a></span><span class="t"><span class="str">            cls = get_geocoder_for_service(geocoder)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t306" class="pln"><span class="n"><a href="#t306">306</a></span><span class="t"><span class="str">            geolocator = cls(**config)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t307" class="pln"><span class="n"><a href="#t307">307</a></span><span class="t"><span class="str">            location = geolocator.geocode(query)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t308" class="pln"><span class="n"><a href="#t308">308</a></span><span class="t"><span class="str">            return location.address</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t309" class="pln"><span class="n"><a href="#t309">309</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t310" class="pln"><span class="n"><a href="#t310">310</a></span><span class="t"><span class="str">        >>> geocode("nominatim", dict(user_agent="specify_your_app_name_here"), \</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t311" class="pln"><span class="n"><a href="#t311">311</a></span><span class="t"><span class="str">"london")</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t312" class="pln"><span class="n"><a href="#t312">312</a></span><span class="t"><span class="str">        'London, Greater London, England, SW1A 2DX, United Kingdom'</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t313" class="pln"><span class="n"><a href="#t313">313</a></span><span class="t"><span class="str">        >>> geocode("photon", dict(), "london")</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t314" class="pln"><span class="n"><a href="#t314">314</a></span><span class="t"><span class="str">        'London, SW1A 2DX, London, England, United Kingdom'</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t315" class="pln"><span class="n"><a href="#t315">315</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t316" class="pln"><span class="n"><a href="#t316">316</a></span><span class="t"><span class="str">    """</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t317" class="mis show_mis"><span class="n"><a href="#t317">317</a></span><span class="t">    <span class="key">try</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t318" class="mis show_mis"><span class="n"><a href="#t318">318</a></span><span class="t">        <span class="key">return</span> <span class="nam">SERVICE_TO_GEOCODER</span><span class="op">[</span><span class="nam">service</span><span class="op">.</span><span class="nam">lower</span><span class="op">(</span><span class="op">)</span><span class="op">]</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t319" class="mis show_mis"><span class="n"><a href="#t319">319</a></span><span class="t">    <span class="key">except</span> <span class="nam">KeyError</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t320" class="mis show_mis"><span class="n"><a href="#t320">320</a></span><span class="t">        <span class="key">raise</span> <span class="nam">GeocoderNotFound</span><span class="op">(</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t321" class="pln"><span class="n"><a href="#t321">321</a></span><span class="t">            <span class="str">"Unknown geocoder '%s'; options are: %s"</span> <span class="op">%</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t322" class="pln"><span class="n"><a href="#t322">322</a></span><span class="t">            <span class="op">(</span><span class="nam">service</span><span class="op">,</span> <span class="nam">SERVICE_TO_GEOCODER</span><span class="op">.</span><span class="nam">keys</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t323" class="pln"><span class="n"><a href="#t323">323</a></span><span class="t">        <span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+</div>
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.5</a>,
+            created at 2021-08-05 14:27 +0000
+        </p>
+    </div>
+</div>
+</body>
+</html>

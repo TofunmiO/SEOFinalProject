@@ -34,6 +34,13 @@ h3 {
    
 }
 
+/*.container1 {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 100%;
+}*/
+
 .bg-steel {
   background-color: #A61B0F;
 }
@@ -137,6 +144,7 @@ nav {
 
 img{
  display:block;
+    text-align: center;
 }
 
 #showcase{
@@ -211,7 +219,7 @@ img{
     height: 100vh;
     padding: 55px;
     color: #fff;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 #section-b1 {
@@ -227,6 +235,10 @@ img{
 #section-b2 div {
     padding: 20px;
     height:100vh;
+}
+
+#section-b3 {
+    text-align: center;
 }
 
 .about {
@@ -320,4 +332,19 @@ article img{
   }
 }
 
+#countries .card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+}
 
+/* On mouse-over, add a deeper shadow */
+#countries .card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+#countries .container {
+  padding: 2px 16px;
+}

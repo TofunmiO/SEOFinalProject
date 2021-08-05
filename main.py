@@ -5,8 +5,7 @@ from flask_bcrypt import Bcrypt
 from sqlalchemy import exc, text
 import requests
 from api_calls import mediawikiAPI, unsplashAPI, africanCountry
-from flask_login import LoginManager, UserMixin, login_required, \
-    login_user, logout_user, current_user
+from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user, current_user
 from forms import LoginForm, RegistrationForm
 import pandas as pd
 from map import createMap
@@ -85,6 +84,7 @@ def discover():
     return render_template('discover.html',
                            subtitle='Discover',
                            text='Discover the beauty of Africa!',
+                           countries = country[1],
                            textinfo=mediawikiAPI(country[1]),
                            links=unsplashAPI(country[1]))
 
@@ -108,12 +108,38 @@ def countries():
         return redirect(url_for('home'))
     else:
         countries = []
+        textinfo = []
         for row in countries_saved['Country']:
             countries.append(row)
+            textinfo.append(mediawikiAPI(row))
     return render_template('countries.html',
                            subtitle='Countries',
                            text='Saved Items',
-                           countries=countries)
+                           countries=countries,
+                           textinfo=textinfo)
+
+# @app.route("/countries", methods=['GET', 'POST'])
+# @login_required
+# def countries():
+#     try:
+#         countries_saved = pd.read_sql_table(current_user.get_id(),
+#                                       con=db.engine)
+#     except ValueError:
+#         flash(f'No countries found!', 'success')
+#         return redirect(url_for('home'))
+#     else:
+#         countries = []
+#         for row in countries_saved['Country']:
+#             countries.append(row)
+#         for names in countries:
+#             textinfo = mediawikiAPI(names)
+#             links = unsplashAPI(names)
+#     return render_template('countries.html',
+#                            subtitle='Countries',
+#                            text='Saved Items',
+#                            countries=countries,
+#                            textinfo=textinfo,
+#                            links=links)
 
 
 # @app.route("/login", methods=['GET', 'POST'])

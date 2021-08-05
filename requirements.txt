@@ -10,4 +10,5 @@ pytest==6.2.4
 Jinja2==3.0.1
 requests==2.18.4
 pandas==1.1.5
+plotly==5.1.0
 pycodestyle

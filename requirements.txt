@@ -8,4 +8,5 @@ flask_behind_proxy==0.1.1
 Flask-Bcrypt==0.7.1
 pytest==6.2.4
 Jinja2==3.0.1
+requests==2.18.4
 pycodestyle

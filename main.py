@@ -68,25 +68,26 @@ def home():
 
 @app.route("/discover", methods=['GET', 'POST'])
 def discover():
-    country = africanCountry()
-    createMap(country[1])
-    data = []
-    data.append(country[1])
+    if request.method != 'POST':
+        country = africanCountry()
+        createMap(country)
+        session['data'] = [str(country)]
     if request.method == 'POST':
         create_table()
-        df = pd.DataFrame(data, columns = ['Country'])
+        df = pd.DataFrame(session['data'], columns = ['Country'])
         df.to_sql(current_user.get_id(),
                   con=db.engine,
                   if_exists='append',
                   index=False)
+        print(df)
         flash(f'Country added!', 'success')
-        return redirect(url_for("discover"))
+        return redirect(url_for("countries"))
     return render_template('discover.html',
                            subtitle='Discover',
                            text='Discover the beauty of Africa!',
-                           countries = country[1],
-                           textinfo=mediawikiAPI(country[1]),
-                           links=unsplashAPI(country[1]))
+                           countries = country,
+                           textinfo=mediawikiAPI(country),
+                           links=unsplashAPI(country))
 
 
 @app.route("/travel", methods=['GET', 'POST'])
@@ -103,6 +104,7 @@ def countries():
     try:
         countries_saved = pd.read_sql_table(current_user.get_id(),
                                       con=db.engine)
+        print(countries_saved)
     except ValueError:
         flash(f'No countries found!', 'success')
         return redirect(url_for('home'))

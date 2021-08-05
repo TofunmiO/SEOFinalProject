@@ -60,10 +60,11 @@ def africanCountry():
         ('ZM', 'Zambia'),
         ('ZW', 'Zimbabwe')
     ]
-    return random.choice(countries)
+    print("called!")
+    country = random.choice(countries)
+    return country[1]
 
 def mediawikiAPI(page):
-    print(page)
     url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&explaintext=1&exintro=1&titles=%s' % (page)
     headers = {'User-Agent': 'AfriXplore'}
 
@@ -86,9 +87,4 @@ def unsplashAPI(page):
         
     
     return linklist
-        
-    
-if __name__ == "__main__":
-    #print(mediawikiAPI('Saudi Arabia'))
-    #print(unsplashAPI('Saudi Arabia'))
-    print(africanCountry())
+

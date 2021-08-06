@@ -39,6 +39,7 @@ h4 {
     font-size: 15px;
 }
 
+
 /*.container1 {
     position: relative;
     overflow: hidden;
@@ -272,6 +273,10 @@ article blockquote {
 #section-b .box-2, #section-b .box-4 {
     height: 100vh;
     background: rgba(122, 44, 37, 0.42);
+    width: 25%;
+}
+
+#section-b about {
     width: 25%;
 }
 

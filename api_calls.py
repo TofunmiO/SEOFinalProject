@@ -4,6 +4,7 @@ import random
 
 UNSPLASH_KEY = 'xPrX-I8RV8Ckm_2WNqjjAxRrIMU-pu1KFDK4w1gcCYw'
 
+
 def africanCountry():
     countries = [
         ('DZ', 'Algeria'),
@@ -64,27 +65,27 @@ def africanCountry():
     country = random.choice(countries)
     return country[1]
 
+
 def mediawikiAPI(page):
-    url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&explaintext=1&exintro=1&titles=%s' % (page)
+    url = 'http://en.wikipedia.org/w/api.php?format=json&action=query'+
+    '&prop=extracts&explaintext=1&exintro=1&titles=%s' % (page)
     headers = {'User-Agent': 'AfriXplore'}
 
     response = requests.get(url, headers=headers)
     data = response.json()
-    
     for key in data['query']['pages']:
         return data['query']['pages'][key]['extract']
 
+
 def unsplashAPI(page):
-    url = 'https://api.unsplash.com/search/photos?page=1&query=%s&client_id=%s' % (page, UNSPLASH_KEY)
+    url = 'https://api.unsplash.com/search/photos?page'+
+    '=1&query=%s&client_id=%s' % (page, UNSPLASH_KEY)
     response = requests.get(url)
     data = response.json()
-    
+
     linklist = []
     for pic in data['results']:
         linklist.append(pic['urls']['regular'])
         if len(linklist) >= 3:
             break
-        
-    
     return linklist
-

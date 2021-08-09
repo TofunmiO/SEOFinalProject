@@ -1,11 +1,13 @@
-from flask import Flask, render_template, url_for, flash, redirect, session, request
+from flask import Flask, render_template
+from flask import url_for, flash, redirect, session, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_behind_proxy import FlaskBehindProxy
 from flask_bcrypt import Bcrypt
 from sqlalchemy import exc, text
 import requests
 from api_calls import mediawikiAPI, unsplashAPI, africanCountry
-from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user, current_user
+from flask_login import LoginManager, UserMixin
+from flask_login import login_required, login_user, logout_user, current_user
 from forms import LoginForm, RegistrationForm
 import pandas as pd
 from map import createMap
@@ -20,14 +22,17 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
+
 
 def create_table():
     query = text("""CREATE TABLE IF NOT EXISTS ' {} ' (
     country STRING )""".format(str(current_user.get_id())))
     db.engine.execute(query)
+
 
 class User(db.Model):
     """An admin user capable of viewing reports.
@@ -59,6 +64,7 @@ class User(db.Model):
     def __repr__(self):
         return f"User('{self.email}')"
 
+
 @app.route("/")
 def home():
     return render_template('home.html',
@@ -74,7 +80,7 @@ def discover():
         session['data'] = [str(country)]
     if request.method == 'POST':
         create_table()
-        df = pd.DataFrame(session['data'], columns = ['Country'])
+        df = pd.DataFrame(session['data'], columns=['Country'])
         df.to_sql(current_user.get_id(),
                   con=db.engine,
                   if_exists='append',
@@ -85,7 +91,7 @@ def discover():
     return render_template('discover.html',
                            subtitle='Discover',
                            text='Discover the beauty of Africa!',
-                           countries = country,
+                           countries=country,
                            textinfo=mediawikiAPI(country),
                            links=unsplashAPI(country))
 
@@ -103,7 +109,7 @@ def travel():
 def countries():
     try:
         countries_saved = pd.read_sql_table(current_user.get_id(),
-                                      con=db.engine)
+                                            con=db.engine)
         print(countries_saved)
     except ValueError:
         flash(f'No countries found!', 'success')
@@ -175,15 +181,18 @@ def login():
                 login_user(user, remember=True)
                 return redirect(url_for("home"))
         if not user:
-            flash(f'Incorrect username or email account for {form.email.data}! Try again!', 'failed')
+            flash(f'Incorrect username or email account for {
+                  form.email.data}! Try again!', 'failed')
             return redirect(url_for("login"))
         password = User.query.get(form.password.data)
         if not password:
-            flash(f'Incorrect password for {form.email.data}! Try again!', 'failed')
+            flash(f'Incorrect password for {
+                  form.email.data}! Try again!', 'failed')
             return redirect(url_for("login"))
         flash(f'Successful login for {form.email.data}!', 'success')
-        return redirect(url_for("home")) # if so - send to home page
+        return redirect(url_for("home"))  # if so - send to home page
     return render_template("login.html", form=form)
+
 
 @app.route("/logout", methods=["GET"])
 @login_required
@@ -219,4 +228,4 @@ def register():
 
 
 if __name__ == '__main__':
-    app.run(debug=True ,host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0")

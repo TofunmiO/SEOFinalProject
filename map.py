@@ -4,13 +4,17 @@ from geopy.geocoders import Nominatim
 
 
 geolocator = Nominatim(user_agent='AfriXplore')
+
+
 def geolocate(country):
     # Geolocate the center of the country
     loc = geolocator.geocode(country)
     # And return latitude and longitude
     return (loc.latitude, loc.longitude)
 
-TOKEN = 'pk.eyJ1IjoiaGJ5cjk5IiwiYSI6ImNrcnh2NW1rYTAyaXkzMW9ldHVjN2V5dzQifQ.Oy7iBuxYB2OtpXu2J-VysQ'
+
+TOKEN = 'pk.eyJ1IjoiaGJ5cjk5IiwiYSI6ImNrcnh2NW1rY'+
+'TAyaXkzMW9ldHVjN2V5dzQifQ.Oy7iBuxYB2OtpXu2J-VysQ'
 
 
 def createMap(country):
